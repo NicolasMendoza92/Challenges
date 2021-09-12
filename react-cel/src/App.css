@@ -1,0 +1,152 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ESTILO NAV */
+ .logo-nav{
+   width: 30px;
+ }
+
+ /* ESTILO IMAGEN PRINCIPAL */
+ .contenedor-img{
+   background-image: url(https://p4.wallpaperbetter.com/wallpaper/876/437/102/blue-material-material-design-minimal-art-wallpaper-preview.jpg);
+   text-align: center;
+   background-size: cover;
+   background-repeat: no-repeat;
+   overflow: hidden;
+   border-radius: 3rem;
+   color: rgb(241, 240, 240);
+ }
+
+ .principal{
+   position: relative;
+  padding:4rem 4rem 1rem 4rem;
+ }
+ .principal-cell{
+  position: relative;
+  padding: 4rem 4rem 1rem 4rem;
+}
+
+.letras-prin{
+  margin: 4rem 1rem 4rem 1rem;
+}
+
+ .cellphone{
+   max-width: 500px;
+   max-height: 500px;
+ }
+
+ /* ESTILO CARDS */
+ .cartiols{
+   border-radius: 2rem;
+   border: none;
+ }
+
+ .cartiols {
+   border-radius: 1rem;
+   border: none;
+ }
+
+ .text-cartiols{
+   text-align: center;
+   position: relative;
+   margin:50px
+ }
+
+
+ /* FOOTER */
+
+ .footer{
+  overflow: hidden;
+  background-color: #37383a;
+}
+
+.footer .icon-footer i {
+  width: 44px;
+  height: 44px;
+  line-height: 43px;
+  font-size: 24px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.icon-footer i {
+  width: 46px;
+  height: 46px;
+  font-size: 14px;
+  color: #4661bb;
+  display: inline-block;
+  text-align: center;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.footer .icon-footer i:hover {
+  color: white;
+}
+
+.footer .icon-footer i+i {
+  margin-left: 4px;
+}
+
+.footer .titulo-footer {
+  color: whitesmoke;
+  font-weight: 600;
+  font-size: 18px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.footer .lista li i:hover {
+  color: rgba(22, 86, 110, 1);
+}
+
+.footer .lista li {
+  color: grey;
+  list-style: none;
+  margin-right: 15px;
+  margin-bottom: 11px;
+  cursor: pointer;
+}
+
+.footer .lista li a {
+  color: grey;
+  text-decoration: none;
+}
