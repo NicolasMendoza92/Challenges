@@ -14,7 +14,7 @@ const Resultados = () => {
         const request = async () => {
             try {
                 // sintaxis para traer info de una API - debo fijarme cual es el array en este caso "results"- aca puedo acceder a todas las prop y vbales que me tiene la API
-                const response = await axios.get(`https://rickandmortyapi.com/api/character/?page=${page}/episode`);
+                const response = await axios.get(`https://rickandmortyapi.com/api/character/?page=${page}`);
                 const result = response.data.results;
                 setResultados(result)
             } catch (error) {
