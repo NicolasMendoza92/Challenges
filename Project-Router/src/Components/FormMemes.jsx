@@ -1,15 +1,21 @@
 import Button from '@restart/ui/esm/Button';
 import React, { useState } from 'react';
 import { Form, InputGroup, Row } from 'react-bootstrap';
+import { guardarEnLocalStorage } from '../utils/localStorage';
 
-export default function Admin() {
-
+export default function FormMemes(props) {
+    const { memes, setMemes } = props;
     const [validated, setValidated] = useState(false);
     // ahora usamos estados para tomar la informacion del usuario -  antes lo usabamos con onChange
     const [input, setInput] = useState({ title: '', image: '' });
-    const [memes, setMemes] =useState([]);
-    console.log=(memes)
 
+
+    // aca recibimos los datos del formulario (funcion para eso)
+    const handleChange = (event) => {
+        const { value, name } = event.target
+        // usamos spread sintax, con los tres puntos e input conservamos los datos que tenian previamente 
+        setInput({ ...input, [name]: value })
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -20,21 +26,15 @@ export default function Admin() {
 
         if (form.checkValidity() === true) {
             // agregamos al array que ya creamos propiedades y elementos nuevos, lo que antes haciamos con push 
-            setMemes([...memes, input]);
+            const newArray = [...memes, input];
+            setMemes(newArray);
+            // aca a la funcion le debo poner los objetos que quiero guardar, si yo pongo memes en vez de newArray me guarda el anterior
+            guardarEnLocalStorage({ key: 'memes', value: newArray });
         }
     };
-
-    // aca recibimos los datos del formulario (funcion para eso)
-    const handleChange = (event) => {
-        const {value,name} = event.target
-        // usamos spread sintax, con los tres puntos e input conservamos los datos que tenian previamente 
-        setInput({...input, [name]:value })
-    };
-
-    return (
-        <>
-            <h2 className="mt-5">Formulario Crear Meme</h2>
-            <Form
+  return (
+    <>
+     <Form
                 noValidate
                 validated={validated}
                 onSubmit={handleSubmit}
@@ -45,7 +45,7 @@ export default function Admin() {
                 <Form.Group controlId="title">
                     <Form.Label>Titulo</Form.Label>
                     <Form.Control
-                        name="titulo"
+                        name="title"
                         onChange={(e) => handleChange(e)}
                         required
                         type="text"
@@ -57,7 +57,7 @@ export default function Admin() {
                     <Form.Label>Imagen</Form.Label>
                     <InputGroup hasValidation>
                         <Form.Control
-                            name="imagen"
+                            name="image"
                             onChange={(e) => handleChange(e)}
                             type="text"
                             placeholder="http://meme.jpg"
@@ -73,6 +73,6 @@ export default function Admin() {
                     </Button>
                 </Row>
             </Form>
-        </>
-    );
+    </>
+  );
 }

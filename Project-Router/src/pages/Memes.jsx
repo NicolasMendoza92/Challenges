@@ -1,11 +1,12 @@
 import React from 'react';
-import Meme from './Meme';
+import Meme from '../Components/Meme';
 import './memes.css'
 
 
 const Memes = ({ memes }) => {
 
-    const mapMemes = memes.map((meme) => (<Meme key={meme.id} meme={meme} />));
+    // la i se la pone para que no salga el error del valor unico en console de la app- 
+    const mapMemes = memes.map((meme,i) => (<Meme key={i} meme={meme} />));
 
     return (
         <>
