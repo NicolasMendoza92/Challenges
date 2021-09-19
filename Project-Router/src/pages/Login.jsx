@@ -1,17 +1,36 @@
-import Button from '@restart/ui/esm/Button';
-import React, { useState } from 'react';
-import { Card, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
+
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import {Button, Card, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
+
+const user = {nombre:'rick', email:'rick@gmail.com', password:'123456'};
 
 export default function Login() {
     const [validated, setValidated] = useState(false);
-    const [input, setInput] = useState({});
+    const [input, setInput] = useState({email:'',password:''});
+    const history = useHistory();
 
-    const handleChange = () => {
+    const handleChange = (event) => {
+        const { value, name } = event.target;
+        const newInput = { ...input, [name]: value };
+        setInput(newInput)
+    };
 
-    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setValidated(true);
 
-    const handleSubmit = () => {
+        const form = event.currentTarget;
 
+        if (form.checkValidity() === true) {
+            if (user.email === input.email && user.password === input.password){
+                alert('Hola Admin' + user.nombre)
+                history.push('/admin');
+            } else{
+                alert('datos incorrectos')
+            }
+        }
     }
   return (
     <Container>
@@ -46,13 +65,13 @@ export default function Login() {
                                     aria-describedby="inputGroupPrepend"
                                     required
                                 />
-                                <Form.Control.Feedback type="invalid">
+                                <Form.Control.Feedback type="invalid">s
                                     Password is required!
                                 </Form.Control.Feedback>
                             </InputGroup>
                         </Form.Group>
                         <Row>
-                            <Button type="submit" className="mx-auto">
+                            <Button type="submit" className="mx-auto mt-4">
                                 Iniciar Sesión
                             </Button>
                         </Row>

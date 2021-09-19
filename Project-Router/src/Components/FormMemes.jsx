@@ -1,6 +1,6 @@
-import Button from '@restart/ui/esm/Button';
-import React, { useState } from 'react';
-import { Form, InputGroup, Row } from 'react-bootstrap';
+
+import { useState } from 'react';
+import { Button, Form, InputGroup, Row } from 'react-bootstrap';
 import { guardarEnLocalStorage } from '../utils/localStorage';
 
 export default function FormMemes(props) {
@@ -12,9 +12,10 @@ export default function FormMemes(props) {
 
     // aca recibimos los datos del formulario (funcion para eso)
     const handleChange = (event) => {
-        const { value, name } = event.target
+        const { value, name } = event.target;
         // usamos spread sintax, con los tres puntos e input conservamos los datos que tenian previamente 
-        setInput({ ...input, [name]: value })
+        const newInput = { ...input, [name]: value };
+        setInput(newInput)
     };
 
     const handleSubmit = (event) => {
@@ -32,9 +33,9 @@ export default function FormMemes(props) {
             guardarEnLocalStorage({ key: 'memes', value: newArray });
         }
     };
-  return (
-    <>
-     <Form
+    return (
+        <>
+            <Form
                 noValidate
                 validated={validated}
                 onSubmit={handleSubmit}
@@ -73,6 +74,6 @@ export default function FormMemes(props) {
                     </Button>
                 </Row>
             </Form>
-    </>
-  );
+        </>
+    );
 }
