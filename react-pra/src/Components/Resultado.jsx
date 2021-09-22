@@ -6,13 +6,13 @@ import './resultado.css'
 const Resultado = (props) => {
 
     const { result } = props;
-    const { name, status, species, image, gender, location} = result
+    const { name, status, species, image, gender, location} = result;
 
 
     return (
-        <Card className="m-2 card-result">
+        <Card className="col-12 col-md-6 col-xl-4 card-result">
             <div>
-            <Image className="imagen-card" src={image}/>
+            <Image src={image}/>
             </div>
             <div className="">
                 <Card.Title>{name}</Card.Title>

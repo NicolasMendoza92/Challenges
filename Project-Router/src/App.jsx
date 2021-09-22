@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { NavbarRB } from './Components/navbar/NavbarRB';
 import { Container } from 'react-bootstrap';
 import Footer from './Components/footer/Footer';
@@ -10,6 +10,7 @@ import Perfil from './pages/Perfil';
 import Admin from './pages/Admin';
 import { useState } from 'react';
 import { leerDeLocalStorage } from './utils/localStorage';
+import DetalleMeme from './pages/DetalleMeme';
 
 
 // siempre que necesitemos cambio en pantalla, necesitamos usar estados. UseState - y con setSection hacemos participe al ususario (funcion que actualiza)
@@ -24,7 +25,7 @@ function App() {
   return (
     <div className="footer-fix">
       {/* usamos la navbar como actualizadora de estados  */}
-      <NavbarRB/>
+      <NavbarRB />
       <Container>
         <Switch>
           <Route path="/" exact>
@@ -41,6 +42,19 @@ function App() {
 
           <Route path="/admin">
             <Admin memes={memes} setMemes={setMemes} />
+          </Route>
+
+          {/* se define un identificador para un meme en detalle */}
+          <Route path="/meme/:memeId">
+            <DetalleMeme />
+          </Route>
+
+          <Route path="/404">
+            404
+          </Route>
+
+          <Route path="*">
+            <Redirect to="/404" />
           </Route>
 
         </Switch>

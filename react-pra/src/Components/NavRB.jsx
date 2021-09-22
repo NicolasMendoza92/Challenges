@@ -1,9 +1,8 @@
-import React from 'react'
-import { Navbar,Form,Nav,FormControl,Button} from 'react-bootstrap'
+import { Navbar, Form, Nav, FormControl, Button } from 'react-bootstrap'
 
 const NavRB = () => {
-    return (
-      <Navbar bg="light" expand="lg">
+  return (
+    <Navbar bg="light" expand="lg" className="mb-2">
       <Navbar.Brand>Rick and Morty </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
@@ -26,7 +25,7 @@ const NavRB = () => {
         </Form>
       </Navbar.Collapse>
     </Navbar>
-    )
+  )
 }
 
 export default NavRB

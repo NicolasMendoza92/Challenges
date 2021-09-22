@@ -7,6 +7,7 @@ const user = {nombre:'rick', email:'rick@gmail.com', password:'123456'};
 
 export default function Login() {
     const [validated, setValidated] = useState(false);
+    // aca debo elegir los parametros que va a tener la funcion.
     const [input, setInput] = useState({email:'',password:''});
     const history = useHistory();
 
@@ -22,6 +23,8 @@ export default function Login() {
         setValidated(true);
 
         const form = event.currentTarget;
+
+        // cuando estan bien los datos, usamos el metodo push, entonces lo redirecciona de una a la pag admin. 
 
         if (form.checkValidity() === true) {
             if (user.email === input.email && user.password === input.password){

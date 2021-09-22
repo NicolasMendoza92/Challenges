@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Button, Form, InputGroup, Row } from 'react-bootstrap';
+import { ID } from '../utils/id';
 import { guardarEnLocalStorage } from '../utils/localStorage';
 
 export default function FormMemes(props) {
@@ -27,7 +28,9 @@ export default function FormMemes(props) {
 
         if (form.checkValidity() === true) {
             // agregamos al array que ya creamos propiedades y elementos nuevos, lo que antes haciamos con push 
-            const newArray = [...memes, input];
+            const newMeme = {...input, id:ID()};
+            // creamos un objeto con spread syntax que copia lo que tiene, osea el input que ponga y le sumo el ID unico 
+            const newArray = [...memes, newMeme];
             setMemes(newArray);
             // aca a la funcion le debo poner los objetos que quiero guardar, si yo pongo memes en vez de newArray me guarda el anterior
             guardarEnLocalStorage({ key: 'memes', value: newArray });

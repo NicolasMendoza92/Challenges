@@ -1,5 +1,7 @@
+
 import React from 'react'
-import { Card} from 'react-bootstrap'
+import { Card, Button} from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import './meme.css'
 
 export default function Meme(props) {
@@ -10,6 +12,7 @@ export default function Meme(props) {
             <Card.Body>
                 <Card.Title className="text-center">{props.meme.title}</Card.Title>
             </Card.Body>
+            <Button as={Link} to={`/meme/${props.meme.id}`}>Ver Detalle</Button>
         </Card>
     )
 }
