@@ -2,7 +2,7 @@
 const exampleImage = 'https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg'
 
 export default function Perfil({onChangeImg}) {
-    const user = { nombre: 'rick'}
+    const user = { nombre: ''}
     return (
         <div>
             <h2>Perfil</h2>

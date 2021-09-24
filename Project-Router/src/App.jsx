@@ -17,23 +17,27 @@ import DetalleMeme from './pages/DetalleMeme';
 
 // cuando arranque la app debe leer de local y mostrame esto, para que cuando actualice no desaparerza, le llamamos 'memes' por que al momento de guardarlo en local tambien le llamamos a la key 'memes'
 const memesLocal = leerDeLocalStorage('memes') || [];
+const userLocal = leerDeLocalStorage('user') || {};
 
 function App() {
 
   const [memes, setMemes] = useState(memesLocal);
 
+  const [user, setUser] = useState(userLocal);
+
   return (
     <div className="footer-fix">
       {/* usamos la navbar como actualizadora de estados  */}
-      <NavbarRB />
+      <NavbarRB user={user} />
       <Container>
         <Switch>
           <Route path="/" exact>
+            {/* aca se le comparte al componente memes, le damos una prop llamada memes con el valor del estado "memes" el que defini antes  */}
             <Memes memes={memes} />
           </Route>
 
           <Route path="/login">
-            <Login />
+            <Login setUser={setUser} />
           </Route>
 
           <Route path="/perfil">
@@ -41,7 +45,7 @@ function App() {
           </Route>
 
           <Route path="/admin">
-            <Admin memes={memes} setMemes={setMemes} />
+            <Admin memes={memes} setMemes={setMemes} user={user} />
           </Route>
 
           {/* se define un identificador para un meme en detalle */}

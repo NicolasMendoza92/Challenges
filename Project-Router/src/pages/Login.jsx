@@ -2,10 +2,11 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {Button, Card, Col, Container, Form, InputGroup, Row } from 'react-bootstrap';
+import { guardarEnLocalStorage } from '../utils/localStorage';
 
-const user = {nombre:'rick', email:'rick@gmail.com', password:'123456'};
+const user = {nombre:'rick', email:'rick@gmail.com', password:'123456', role: 'admin'};
 
-export default function Login() {
+export default function Login({setUser}) {
     const [validated, setValidated] = useState(false);
     // aca debo elegir los parametros que va a tener la funcion.
     const [input, setInput] = useState({email:'',password:''});
@@ -29,12 +30,23 @@ export default function Login() {
         if (form.checkValidity() === true) {
             if (user.email === input.email && user.password === input.password){
                 alert('Hola Admin' + user.nombre)
+                setUser(user);
+                guardarEnLocalStorage({ key: 'user', value: user });
                 history.push('/admin');
             } else{
                 alert('datos incorrectos')
+                form.reset();   
+                setInput({});
             }
+            
         }
     }
+
+    const logOut = () => {
+        setUser({});
+        localStorage.removeItem('user');
+    };
+
   return (
     <Container>
     <Row>
@@ -79,6 +91,9 @@ export default function Login() {
                             </Button>
                         </Row>
                         <Row>
+                        <Button onClick={logOut} className="mx-auto btn-secondary mt-4">
+                                Cerrar Sesion
+                            </Button>
                         </Row>
                     </Form>
                 </Card.Body>
