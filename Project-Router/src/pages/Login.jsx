@@ -91,9 +91,9 @@ export default function Login({setUser}) {
                             </Button>
                         </Row>
                         <Row>
-                        <Button onClick={logOut} className="mx-auto btn-secondary mt-4">
+                        {user.nombre === {} && <Button onClick={logOut} className="mx-auto btn-secondary mt-4">
                                 Cerrar Sesion
-                            </Button>
+                            </Button> }
                         </Row>
                     </Form>
                 </Card.Body>
