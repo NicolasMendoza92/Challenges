@@ -42,7 +42,7 @@ export default function FormMemes(props) {
                 noValidate
                 validated={validated}
                 onSubmit={handleSubmit}
-                className="card mt-5 p-5 mx-auto"
+                className="card mt-5 p-5 mx-auto mb-2"
                 style={{ width: '500px' }}
             >
                 {/* aca se pone el id que tiene el input */}
@@ -57,7 +57,7 @@ export default function FormMemes(props) {
                     />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="image">
+                <Form.Group className="mb-2" controlId="image">
                     <Form.Label>Imagen</Form.Label>
                     <InputGroup hasValidation>
                         <Form.Control

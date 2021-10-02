@@ -25,6 +25,8 @@ function App() {
 
   const [user, setUser] = useState(userLocal);
 
+  const isAdmin = user.role === 'admin';
+
   return (
     <div className="footer-fix">
       {/* usamos la navbar como actualizadora de estados  */}
@@ -40,13 +42,17 @@ function App() {
             <Login setUser={setUser} />
           </Route>
 
-          <Route path="/perfil">
-            <Perfil />
-          </Route>
+          {isAdmin && (
+            <Route path="/admin">
+              <Admin memes={memes} setMemes={setMemes} user={user} />
+            </Route>
+          )}
 
-          <Route path="/admin">
-            <Admin memes={memes} setMemes={setMemes} user={user} />
-          </Route>
+          {isAdmin && (
+            <Route path="/perfil">
+              <Perfil />
+            </Route>
+          )}
 
           {/* se define un identificador para un meme en detalle */}
           <Route path="/meme/:memeId">
