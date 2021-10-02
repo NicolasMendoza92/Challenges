@@ -9,6 +9,7 @@ const user = { name: 'rick', email: 'rick@gmail.com', password: '123456', role: 
 export default function Login({ setUser }) {
     const [validated, setValidated] = useState(false);
     // aca debo elegir los parametros que va a tener la funcion.
+    
     const [input, setInput] = useState({ email: '', password: '' });
 
     const history = useHistory();

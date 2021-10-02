@@ -1,15 +1,17 @@
 
 const exampleImage = 'https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg'
 
+
 export default function Perfil({onChangeImg}) {
-    const user = { name: ''}
+
+    const user = {name:'rick'}
     return (
         <div>
             <h2>Perfil</h2>
             <div className="text-center bg-white p-2 my-5">
                 <div className="d-flex justify-content-center align-items-end ml-4 m-2">
                     <img
-                        src={user.image || exampleImage}
+                        src= {exampleImage}
                         alt="profile"
                         width="200"
                         className="rounded-circle"
