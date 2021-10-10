@@ -4,7 +4,7 @@ export function guardarEnLocalStorage(objeto) {
     localStorage.setItem(objeto.key, datosJson); // Guardar en localStorage.
 }
 
-// esta funcion solo recibe la clave de lo que queire leer de local storage
+// esta funcion solo recibe la clave de lo que queire leer de local storage - esta es la que me lo almaccene lo lee cuando se actualiza     
 export function leerDeLocalStorage(key) {
     const json = localStorage.getItem(key);
     const data = JSON.parse(json);

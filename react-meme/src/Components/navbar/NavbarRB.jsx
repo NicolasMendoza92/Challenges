@@ -1,6 +1,7 @@
 
 import { Container,Navbar,Nav} from 'react-bootstrap';
 
+// aca declaramos el nombre del parametro, y le llamamos "props" como buena practica 
 export const NavbarRB = (props) => {
     return (
         <Navbar bg="light" expand="lg">
@@ -9,6 +10,7 @@ export const NavbarRB = (props) => {
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
+        {/* aca llamamos a setSection que definimos en la pantalla App */}
         <Nav.Link onClick={()=> {props.setSection('memes')}} href="#home">Home</Nav.Link>
         <Nav.Link onClick={()=> {props.setSection('login')}} href="#link">Login</Nav.Link>
         <Nav.Link onClick={()=> {props.setSection('perfil')}} href="#link">Perfil</Nav.Link>

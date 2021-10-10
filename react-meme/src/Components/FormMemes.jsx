@@ -4,6 +4,7 @@ import { Form, InputGroup, Row } from 'react-bootstrap';
 import { guardarEnLocalStorage } from '../utils/localStorage';
 
 export default function FormMemes(props) {
+    // aca antes teniamos memes y setMemes pero lo elevamos y lo llevamos a App, y dejamos la desectructuracion solamente 
     const { memes, setMemes } = props;
     const [validated, setValidated] = useState(false);
     // ahora usamos estados para tomar la informacion del usuario -  antes lo usabamos con onChange
@@ -13,7 +14,7 @@ export default function FormMemes(props) {
     // aca recibimos los datos del formulario (funcion para eso)
     const handleChange = (event) => {
         const { value, name } = event.target
-        // usamos spread sintax, con los tres puntos e input conservamos los datos que tenian previamente 
+        // usamos spread sintax, con los tres puntos e input conservamos los datos que tenian previamente, el [name] entre corchetes es importante ya que lo tenemos como atributo del input
         setInput({ ...input, [name]: value })
     };
 
@@ -38,7 +39,7 @@ export default function FormMemes(props) {
                 noValidate
                 validated={validated}
                 onSubmit={handleSubmit}
-                className="card mt-5 p-5 mx-auto"
+                className="card mt-5 p-5 mx-auto mb-2"
                 style={{ width: '500px' }}
             >
                 {/* aca se pone el id que tiene el input */}
@@ -53,7 +54,7 @@ export default function FormMemes(props) {
                     />
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                 </Form.Group>
-                <Form.Group controlId="image">
+                <Form.Group controlId="image" className="mb-2">
                     <Form.Label>Imagen</Form.Label>
                     <InputGroup hasValidation>
                         <Form.Control
@@ -68,7 +69,7 @@ export default function FormMemes(props) {
                     </InputGroup>
                 </Form.Group>
                 <Row>
-                    <Button type="submit" className="mx-auto">
+                    <Button type="submit" className="btn btn-primary mx-auto">
                         Crear Meme
                     </Button>
                 </Row>
