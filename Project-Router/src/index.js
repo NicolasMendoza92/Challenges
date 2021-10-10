@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// debemos importar este componente, lo llamamos y envuelve toda la App, lo reasignamos como Router, esto nos habilita para hacer mas facil la navegacion
 import {BrowserRouter as Router} from 'react-router-dom';
 
 ReactDOM.render(

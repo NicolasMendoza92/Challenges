@@ -7,11 +7,11 @@ import { guardarEnLocalStorage } from '../utils/localStorage';
 const user = { name: 'rick', email: 'rick@gmail.com', password: '123456', role: 'admin' };
 
 export default function Login({ setUser }) {
-    const [validated, setValidated] = useState(false);
-    // aca debo elegir los parametros que va a tener la funcion.
-    
-    const [input, setInput] = useState({ email: '', password: '' });
 
+    const [validated, setValidated] = useState(false);
+    // aca debo elegir los parametros que va a tener la funcion y su estado incial es email y password vacios  
+    const [input, setInput] = useState({ email: '', password: '' });
+    // el useHistory, me sirve como un redirect, y luego lo invoco este estado con un history.push (y /"ruta que quiero")
     const history = useHistory();
 
     const handleChange = (event) => {
@@ -31,9 +31,9 @@ export default function Login({ setUser }) {
 
         if (form.checkValidity() === true) {
 
+            // colocamos la validacion ---> cuando se cumple la condicion de los dos valores que el usuario pone en el input entonces 
             if (user.email === input.email && user.password === input.password) {
                 alert('Hola Admin' + user.name)
-
                 setUser(user);
                 guardarEnLocalStorage({ key: 'user', value: user });
                 history.push('/admin');
@@ -45,11 +45,6 @@ export default function Login({ setUser }) {
 
         }
     }
-
-    const logOut = () => {
-        setUser({});
-        localStorage.removeItem('user');
-    };
 
     return (
         <Container>
@@ -67,7 +62,7 @@ export default function Login({ setUser }) {
                                         name="email"
                                         onChange={(e) => handleChange(e)}
                                         required
-                                        type="text"
+                                        type="email"
                                         placeholder="Last name"
                                     />
                                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -92,11 +87,6 @@ export default function Login({ setUser }) {
                                 <Row>
                                     <Button type="submit" className="mx-auto mt-4">
                                         Iniciar Sesión
-                                    </Button>
-                                </Row>
-                                <Row>
-                                    <Button onClick={logOut} className="mx-auto btn-secondary mt-4">
-                                        Cerrar Sesion
                                     </Button>
                                 </Row>
                             </Form>

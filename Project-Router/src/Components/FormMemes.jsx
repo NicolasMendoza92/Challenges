@@ -27,7 +27,7 @@ export default function FormMemes(props) {
         const form = event.currentTarget;
 
         if (form.checkValidity() === true) {
-            // agregamos al array que ya creamos propiedades y elementos nuevos, lo que antes haciamos con push 
+            // agregamos al array que ya creamos propiedades y elementos nuevos, lo que antes haciamos con push. Aca creamos una vble para que cada vez que se cree un meme se le asigne un ID (el id es util para despues diferenciar y usar "find" o delete)
             const newMeme = {...input, id:ID()};
             // creamos un objeto con spread syntax que copia lo que tiene, osea el input que ponga y le sumo el ID unico 
             const newArray = [...memes, newMeme];

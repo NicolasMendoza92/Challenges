@@ -5,7 +5,7 @@ import { Button, Container } from 'react-bootstrap';
 
 const Resultados = () => {
 
-    // creamos la vble fundamental que se llama resultados
+    // creamos la vble fundamental que se llama resultados, aca por cada input tenemos un estado -- por cada input asignamos una fn que lo actualiza, en este caso tenemos un input (resultados(es la consulta a la api), uno page (un boton que cambia), y filtros "species y gender" ,son input que maneja el usuario)
     const [resultados, setResultados] = useState([]);
 
     const [page, setPage] = useState(1);

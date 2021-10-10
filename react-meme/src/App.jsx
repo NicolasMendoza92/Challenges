@@ -10,7 +10,7 @@ import Admin from './pages/Admin';
 import { useState } from 'react';
 import { leerDeLocalStorage } from './utils/localStorage';
 
-// siempre que necesitemos cambio en pantalla, necesitamos usar estados. UseState - y con setSection hacemos participe al ususario (funcion que actualiza)
+// siempre que necesitemos cambio en pantalla, necesitamos usar estados. UseState - y con setSection hacemos participe al ususario (funcion que actualiza - esta definida en un global Scope por que podemos acceder con importarla)
 const usersLocal = leerDeLocalStorage('users') || [];
 // cuando arranque la app debe leer de local y mostrame esto, para que cuando actualice no desaparerza, le llamamos 'memes' por que al momento de guardarlo en local tambien le llamamos a la key 'memes'
 const memesLocal = leerDeLocalStorage('memes') || [];
@@ -21,7 +21,7 @@ function App() {
   const [section, setSection] = useState('memes');
   // aca estamos elevando el estado, y traemos lo que estaba en el componente FormMemes a App, ya que App contiene a Admin, y memes 
   const [memes, setMemes] = useState(memesLocal);
-// aca tambien elevamos el estado de users, ya no lo tenemos en Login ahora lo tenemos en App 
+// aca tambien elevamos el estado de users, ya no lo tenemos en Login ahora lo tenemos en App y lo pueden usar mas componentes, siempre y cuando le pongamos como objeto, asi como lo pusimos en el componente Admin
   const [users, setUsers] = useState(usersLocal);
 
 
@@ -30,7 +30,7 @@ function App() {
       {/* usamos la navbar como actualizadora de estados, osea que al estado section lo pueda modificar la nabvar, y le pasamos la fn a traves de props, osea declaramos una que se llama setSection y le pasamos como valor a "setSection" que es la del useState */}
       <NavbarRB setSection={setSection}/>
       <Container>
-        {/* aca estamos creando un objeto a la propiedad memes, y lo va a recibir el componente Memes */}
+        {/* aca estamos creando un objeto a la propiedad memes, y lo va a recibir el componente Memes, esta info solo lo va a consumir el componente Memes */}
         {section === 'memes' && <Memes memes={memes} />}
         {section === 'login' && <Login users={users} setUsers={setUsers}/>}
         {section === 'perfil' && <Perfil />}
