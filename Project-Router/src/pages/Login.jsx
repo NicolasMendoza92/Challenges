@@ -6,6 +6,7 @@ import { guardarEnLocalStorage } from '../utils/localStorage';
 
 const user = { name: 'rick', email: 'rick@gmail.com', password: '123456', role: 'admin' };
 
+// al tener el setUser, lo podemos desectructurar 
 export default function Login({ setUser }) {
 
     const [validated, setValidated] = useState(false);
@@ -40,6 +41,7 @@ export default function Login({ setUser }) {
             } else {
                 alert('datos incorrectos')
                 form.reset();
+                // seteamos el input con un campo vacio, entonces debemos agregar que el valor del input dependa del estado 
                 setInput({});
             }
 
@@ -60,6 +62,7 @@ export default function Login({ setUser }) {
                                     <Form.Label>Email</Form.Label>
                                     <Form.Control
                                         name="email"
+                                        value={input.email}
                                         onChange={(e) => handleChange(e)}
                                         required
                                         type="email"
@@ -73,6 +76,7 @@ export default function Login({ setUser }) {
                                         <Form.Control
                                             minLength="6"
                                             name="password"
+                                            value={input.password}
                                             onChange={(e) => handleChange(e)}
                                             type="password"
                                             placeholder="****"

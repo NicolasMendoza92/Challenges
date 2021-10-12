@@ -41,7 +41,7 @@ function App() {
             {/* aca se le comparte al componente memes, le damos una prop llamada memes con el valor del estado "memes" el que defini antes  */}
             <Memes memes={memes} />
           </Route>
-
+          {/* ahora el componente de le damos la fn que actualice el estado y le damos el atributo "setUser" */}
           <Route path="/login">
             <Login setUser={setUser} />
           </Route>

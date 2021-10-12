@@ -1,6 +1,5 @@
 
 import { Table, Button } from 'react-bootstrap';
-import { Redirect } from 'react-router';
 
 export default function TableMemes({ memes}) {
 
@@ -10,10 +9,6 @@ export default function TableMemes({ memes}) {
         console.log(memeEncontrado);
 
         // localStorage.removeItem('memeId');
-
-        if (memeEncontrado === undefined) {
-            return <Redirect to="/404" />;
-        }
     };
 
     return (
